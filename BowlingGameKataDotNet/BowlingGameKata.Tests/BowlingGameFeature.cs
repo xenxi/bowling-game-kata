@@ -34,5 +34,34 @@ namespace BowlingGameKata.Tests
 
             score.Should().Be(90);
         }
+
+        [Test]
+        public void score_a_game_with_spares()
+        {
+            var game = new BowlingGame();
+            game.Roll(5);
+            game.Roll(5);
+            game.Roll(5);
+            game.Roll(5);
+            game.Roll(5);
+            game.Roll(5);
+            game.Roll(5);
+            game.Roll(5);
+            game.Roll(5);
+            game.Roll(5);
+            game.Roll(5);
+            game.Roll(5);
+            game.Roll(5);
+            game.Roll(5);
+            game.Roll(5);
+            game.Roll(5);
+            game.Roll(5);
+            game.Roll(5);
+            game.Roll(5);
+
+            var score = game.Score();
+
+            score.Should().Be(150);
+        }
     }
 }
