@@ -10,7 +10,7 @@
 
         public void Roll(int v)
         {
-            _score = v;
+            _score += v;
         }
     }
 }
