@@ -28,5 +28,17 @@ namespace BowlingGameKata.Tests
 
             action.Should().Throw<InvalidNumberOfPins>();
         }
+
+        [Test]
+        public void calcule_spare_bonus()
+        {
+            var frame = new Frame();
+            frame.Anotate(5);
+            frame.Anotate(2);
+
+            var bonus = frame.SpareBonus();
+
+            bonus.Should().Be(5);
+        }
     }
 }

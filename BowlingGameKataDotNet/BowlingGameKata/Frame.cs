@@ -19,5 +19,10 @@
         }
 
         public bool Completed() => _tries > 1;
+
+        public int SpareBonus()
+        {
+            return 5;
+        }
     }
 }

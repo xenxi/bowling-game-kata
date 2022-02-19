@@ -37,7 +37,10 @@
             var score = _frames.Sum(f => f.Score);
 
             var bunuses = IsStrike() ? _frames.ElementAt(1).Score : 0;
+            for (int i = 0; i < _frames.Count; i+=2)
+            {
 
+            }
             return score + bunuses;
         }
 
