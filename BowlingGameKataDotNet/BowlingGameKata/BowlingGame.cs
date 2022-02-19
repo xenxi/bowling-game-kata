@@ -27,7 +27,7 @@
             _tries++;
             _frame = _tries / 2;
 
-            if (_current.Finished())
+            if (_current.Completed())
                 _current = _second;
         }
 

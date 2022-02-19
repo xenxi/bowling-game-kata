@@ -6,13 +6,13 @@
         public int Score { get; private set; } = 0;
         public void Anotate(int pinsDown)
         {
-            if (Finished())
+            if (Completed())
                 throw new CompletedFrame();
 
             Score += pinsDown;
             _tries++;
         }
 
-        public bool Finished() => _tries > 1;
+        public bool Completed() => _tries > 1;
     }
 }
