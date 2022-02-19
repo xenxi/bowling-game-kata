@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BowlingGameKata.Tests
+﻿namespace BowlingGameKata
 {
     public class CompletedGame : Exception
     {
