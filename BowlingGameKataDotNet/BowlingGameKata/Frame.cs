@@ -2,10 +2,13 @@
 {
     public class Frame
     {
-        public int Score { get; private set; } = 0;
         private int _tries = 0;
+        public int Score { get; private set; } = 0;
         public void Anotate(int pinsDown)
         {
+            if (Finished())
+                throw new CompletedFrame();
+
             Score += pinsDown;
             _tries++;
         }

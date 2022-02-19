@@ -17,7 +17,7 @@ namespace BowlingGameKata.Tests
         }
 
         [Test]
-        public void not_allow_to_play_more_thant_ten_frames()
+        public void not_allow_to_play_more_than_ten_frames()
         {
             GivenAnyCompletedGame();
 
