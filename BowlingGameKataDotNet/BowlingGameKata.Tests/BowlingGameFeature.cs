@@ -41,6 +41,9 @@ namespace BowlingGameKata.Tests
             var game = new BowlingGame();
             game.Roll(5);
             game.Roll(5);
+
+            game.Roll(5);
+            game.Roll(5);
             game.Roll(5);
             game.Roll(5);
             game.Roll(5);
