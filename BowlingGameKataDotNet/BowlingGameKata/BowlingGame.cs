@@ -34,10 +34,12 @@
         public int Score()
         {
             var score = _first.Score + _second.Score;
-            var bunuses = _first.Score == 10 ? _second.Score : 0;
+            var bunuses = IsStrike() ? _second.Score : 0;
 
             return score + bunuses;
         }
+
+        private bool IsStrike() => _first.Score == 10;
 
         private void EnsureGameIsNotComplete()
         {
