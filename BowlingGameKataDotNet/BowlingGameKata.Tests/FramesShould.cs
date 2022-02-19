@@ -17,5 +17,16 @@ namespace BowlingGameKata.Tests
 
             action.Should().Throw<CompletedFrame>();
         }
+
+        [Test]
+        public void not_allow_to_anonate_more_than_ten_pins()
+        {
+            var frame = new Frame();
+            frame.Anotate(5);
+
+            Action action = () => frame.Anotate(6);
+
+            action.Should().Throw<InvalidNumberOfPins>();
+        }
     }
 }
