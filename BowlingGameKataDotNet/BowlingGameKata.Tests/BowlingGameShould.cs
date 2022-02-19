@@ -15,5 +15,15 @@ namespace BowlingGameKata.Tests
             score.Should().Be(0);
         }
 
+        [Test]
+        public void scores_a_first_roll()
+        {
+            var game = new BowlingGame();
+            game.Roll(3);
+
+            var score = game.Score();
+
+            score.Should().Be(3);
+        }
     }
 }
