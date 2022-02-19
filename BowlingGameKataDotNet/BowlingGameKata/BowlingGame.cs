@@ -22,12 +22,12 @@
         {
             EnsureGameIsNotComplete();
 
-            _current.Score += pinsDown;
+            _current.Anotate(pinsDown);
 
             _tries++;
             _frame = _tries / 2;
 
-            if (_tries > 1)
+            if (_current.Finished())
                 _current = _second;
         }
 
@@ -39,12 +39,12 @@
             return score + bunuses;
         }
 
-        private bool IsStrike() => _first.Score == 10;
-
         private void EnsureGameIsNotComplete()
         {
             if (_frame == 10)
                 throw new CompletedGame();
         }
+
+        private bool IsStrike() => _first.Score == 10;
     }
 }
