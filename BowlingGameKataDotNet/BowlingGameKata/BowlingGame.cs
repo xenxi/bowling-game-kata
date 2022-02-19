@@ -36,9 +36,14 @@
         {
             var score = _frames.Sum(f => f.Score);
 
-            var bunuses = IsStrike() ? _frames.ElementAt(1).Score : 0;
-            for (int i = 0; i < _frames.Count; i+=2)
+            var bunuses =  0;
+            for (int i = 0; i < _frames.Count - 1; i++)
             {
+                var frame = _frames[i];
+                var nextFrame = _frames[i + 1];
+
+                if (IsStrike(frame))
+                    bunuses += nextFrame.SpareBonus();
 
             }
             return score + bunuses;
@@ -50,6 +55,7 @@
                 throw new CompletedGame();
         }
 
-        private bool IsStrike() => _frames.First().Score == 10;
+
+        private bool IsStrike(Frame frame) => frame.Score == 10;
     }
 }
