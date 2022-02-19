@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
+using System;
 
 namespace BowlingGameKata.Tests
 {
@@ -13,6 +14,20 @@ namespace BowlingGameKata.Tests
             var score = _game.Score();
 
             score.Should().Be(0);
+        }
+
+        [Test]
+        public void not_allow_to_play_more_thant_ten_frames()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                _game.Roll(1);
+                _game.Roll(1);
+            }
+
+            Action action = () => _game.Roll(1);
+
+            action.Should().Throw<CompletedGame>();
         }
 
         [Test]
@@ -35,7 +50,6 @@ namespace BowlingGameKata.Tests
 
             score.Should().Be(9);
         }
-
         [SetUp]
         public void SetUp()
         {
