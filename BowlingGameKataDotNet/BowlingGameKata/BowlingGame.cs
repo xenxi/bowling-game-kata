@@ -8,13 +8,18 @@
 
         public void Roll(int pinsDown)
         {
-            if (_frame == 10)
-                throw new CompletedGame();
+            EnsureGameIsNotComplete();
 
             _score += pinsDown;
 
             _tries++;
             _frame = _tries / 2;
+        }
+
+        private void EnsureGameIsNotComplete()
+        {
+            if (_frame == 10)
+                throw new CompletedGame();
         }
 
         public int Score()
