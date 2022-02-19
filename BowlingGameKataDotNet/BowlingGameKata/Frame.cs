@@ -2,6 +2,7 @@
 {
     public class Frame
     {
+        private int _first = 0;
         private int _tries = 0;
         public int Score { get; private set; } = 0;
 
@@ -15,14 +16,14 @@
             if (Score > 10)
                 throw new InvalidNumberOfPins();
 
+            if (_tries == 0)
+                _first = pinsDown;
+
             _tries++;
         }
 
         public bool Completed() => _tries > 1;
 
-        public int SpareBonus()
-        {
-            return 5;
-        }
+        public int SpareBonus() => _first;
     }
 }

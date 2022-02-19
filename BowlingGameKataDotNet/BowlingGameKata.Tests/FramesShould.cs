@@ -40,5 +40,15 @@ namespace BowlingGameKata.Tests
 
             bonus.Should().Be(5);
         }
+
+        [Test]
+        public void have_a_starting_bonus_of_zero()
+        {
+            var frame = new Frame();
+
+            var bonus = frame.SpareBonus();
+
+            bonus.Should().Be(0);
+        }
     }
 }
