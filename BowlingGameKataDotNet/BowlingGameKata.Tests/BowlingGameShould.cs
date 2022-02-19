@@ -5,12 +5,12 @@ namespace BowlingGameKata.Tests
 {
     public class BowlingGameShould
     {
-        private BowlingGame game;
+        private BowlingGame _game;
 
         [Test]
         public void have_a_starting_score_of_zero()
         {
-            var score = game.Score();
+            var score = _game.Score();
 
             score.Should().Be(0);
         }
@@ -18,9 +18,9 @@ namespace BowlingGameKata.Tests
         [Test]
         public void scores_a_first_roll()
         {
-            game.Roll(3);
+            _game.Roll(3);
 
-            var score = game.Score();
+            var score = _game.Score();
 
             score.Should().Be(3);
         }
@@ -28,10 +28,10 @@ namespace BowlingGameKata.Tests
         [Test]
         public void scores_a_second_roll()
         {
-            game.Roll(3);
-            game.Roll(6);
+            _game.Roll(3);
+            _game.Roll(6);
 
-            var score = game.Score();
+            var score = _game.Score();
 
             score.Should().Be(9);
         }
@@ -39,7 +39,7 @@ namespace BowlingGameKata.Tests
         [SetUp]
         public void SetUp()
         {
-            game = new BowlingGame();
+            _game = new BowlingGame();
         }
     }
 }
