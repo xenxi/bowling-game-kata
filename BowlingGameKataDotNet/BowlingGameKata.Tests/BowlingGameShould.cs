@@ -19,11 +19,7 @@ namespace BowlingGameKata.Tests
         [Test]
         public void not_allow_to_play_more_thant_ten_frames()
         {
-            for (int i = 0; i < 10; i++)
-            {
-                _game.Roll(1);
-                _game.Roll(1);
-            }
+            GivenAnyCompletedGame();
 
             Action action = () => _game.Roll(1);
 
@@ -50,10 +46,20 @@ namespace BowlingGameKata.Tests
 
             score.Should().Be(9);
         }
+
         [SetUp]
         public void SetUp()
         {
             _game = new BowlingGame();
+        }
+
+        private void GivenAnyCompletedGame()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                _game.Roll(1);
+                _game.Roll(1);
+            }
         }
     }
 }
