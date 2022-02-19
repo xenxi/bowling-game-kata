@@ -8,9 +8,9 @@
             return _score;
         }
 
-        public void Roll(int v)
+        public void Roll(int pinsDown)
         {
-            _score += v;
+            _score += pinsDown;
         }
     }
 }
