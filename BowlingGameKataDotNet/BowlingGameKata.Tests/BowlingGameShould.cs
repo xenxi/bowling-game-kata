@@ -58,6 +58,19 @@ namespace BowlingGameKata.Tests
 
             score.Should().Be(16);
         }
+        [Test]
+        public void scores_multiple_spares()
+        {
+            _game.Roll(3);
+            _game.Roll(7);
+            _game.Roll(5);
+            _game.Roll(5);
+            _game.Roll(4);
+
+            var score = _game.Score();
+
+            score.Should().Be(33);
+        }
 
         [SetUp]
         public void SetUp()
