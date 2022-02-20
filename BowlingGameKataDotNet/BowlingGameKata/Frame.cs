@@ -22,7 +22,9 @@
 
             _tries++;
         }
+        public bool IsStrike() => HasBonus() && _tries == 1;
 
+        public bool HasBonus() => Score == 10;
         public bool Completed() => _tries > 1 || Score == 10;
 
         public int SpareBonus() => _first;
