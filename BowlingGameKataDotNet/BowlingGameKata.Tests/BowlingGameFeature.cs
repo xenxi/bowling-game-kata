@@ -41,7 +41,6 @@ namespace BowlingGameKata.Tests
             var game = new BowlingGame();
             game.Roll(5);
             game.Roll(5);
-
             game.Roll(5);
             game.Roll(5);
             game.Roll(5);
@@ -65,6 +64,28 @@ namespace BowlingGameKata.Tests
             var score = game.Score();
 
             score.Should().Be(150);
+        }
+
+        [Test]
+        public void score_a_perfect_game()
+        {
+            var game = new BowlingGame();
+            game.Roll(10);
+            game.Roll(10);
+            game.Roll(10);
+            game.Roll(10);
+            game.Roll(10);
+            game.Roll(10);
+            game.Roll(10);
+            game.Roll(10);
+            game.Roll(10);
+            game.Roll(10);
+            game.Roll(10);
+            game.Roll(10);
+
+            var score = game.Score();
+
+            score.Should().Be(300);
         }
     }
 }
