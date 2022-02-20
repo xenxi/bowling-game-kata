@@ -27,8 +27,6 @@
         public int Score()
         {
             var score = _frames.Sum(f => f.Score);
-            if (score == 120)
-                return 300;
             var bunuses = 0;
             for (int i = 0; i < _frames.Count - 1; i++)
             {
