@@ -32,7 +32,22 @@ namespace BowlingGameKata.Tests
 
             action.Should().Throw<CompletedGame>();
         }
+        [Test]
+        public void not_allow_to_play_more_than_twelve_frames_for_a_game_extended_by_strike()
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                _game.Roll(1);
+                _game.Roll(1);
+            }
+            _game.Roll(10);
+            _game.Roll(1);
+            _game.Roll(1);
 
+            Action action = () => _game.Roll(1);
+
+            action.Should().Throw<CompletedGame>();
+        }
         [Test]
         public void not_allow_to_play_more_than_ten_frames()
         {

@@ -53,12 +53,14 @@
                 if (lastFrame.Completed() && !lastFrame.HasBonus())
                     throw new CompletedGame();
             }
-            else if (_frames.Count == 11 || _frames.Count == 12)
+            else if (_frames.Count == 11)
             {
                 var lastFrame = _frames[9];
-                if (!lastFrame.IsStrike())
+                if (!lastFrame.IsStrike() || _frames.Last().Completed())
                     throw new CompletedGame();
             }
+            else if (_frames.Count > 11)
+                throw new CompletedGame();
         }
     }
 }
