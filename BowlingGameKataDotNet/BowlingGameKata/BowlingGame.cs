@@ -36,7 +36,7 @@
 
                 if (HasBonus(frame) && i < 9)
                 {
-                    if (IsFullStrike(frame))
+                    if (IsStrike(frame))
                         bunuses += nextFrame.Score;
                     else
                         bunuses += nextFrame.SpareBonus();
@@ -57,7 +57,7 @@
                 throw new CompletedGame();
         }
 
-        private bool IsFullStrike(Frame frame) => HasBonus(frame) && frame.Tries == 1;
+        private bool IsStrike(Frame frame) => HasBonus(frame) && frame.Tries == 1;
 
         private bool HasBonus(Frame frame) => frame.Score == 10;
     }
