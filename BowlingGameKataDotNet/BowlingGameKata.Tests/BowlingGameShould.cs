@@ -17,16 +17,7 @@ namespace BowlingGameKata.Tests
         }
 
         [Test]
-        public void not_allow_to_play_more_than_ten_frames()
-        {
-            GivenAnyCompletedGame();
-
-            Action action = () => _game.Roll(1);
-
-            action.Should().Throw<CompletedGame>();
-        }
-        [Test]
-        public void scores_game_extended_by_spare()
+        public void not_allow_to_play_more_than_eleven_frames_for_a_game_extended_by_spare()
         {
             for (int i = 0; i < 9; i++)
             {
@@ -37,9 +28,19 @@ namespace BowlingGameKata.Tests
             _game.Roll(5);
             _game.Roll(4);
 
-            var score = _game.Score();
+            Action action = () => _game.Roll(1);
 
-            score.Should().Be(32);
+            action.Should().Throw<CompletedGame>();
+        }
+
+        [Test]
+        public void not_allow_to_play_more_than_ten_frames()
+        {
+            GivenAnyCompletedGame();
+
+            Action action = () => _game.Roll(1);
+
+            action.Should().Throw<CompletedGame>();
         }
         [Test]
         public void scores_a_first_roll()
@@ -72,6 +73,23 @@ namespace BowlingGameKata.Tests
             var score = _game.Score();
 
             score.Should().Be(16);
+        }
+
+        [Test]
+        public void scores_game_extended_by_spare()
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                _game.Roll(1);
+                _game.Roll(1);
+            }
+            _game.Roll(5);
+            _game.Roll(5);
+            _game.Roll(4);
+
+            var score = _game.Score();
+
+            score.Should().Be(32);
         }
         [Test]
         public void scores_multiple_spares()

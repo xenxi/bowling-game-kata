@@ -42,12 +42,14 @@
 
         private void EnsureGameIsNotComplete()
         {
-            if (_frames.Count > 9)
+            if (_frames.Count == 10)
             {
                 var lastFrame = _frames[9];
                 if (lastFrame.Completed() && !IsStrike(lastFrame))
                     throw new CompletedGame();
             }
+            else if (_frames.Count > 10)
+                throw new CompletedGame();
         }
 
         private bool IsStrike(Frame frame) => frame.Score == 10;
