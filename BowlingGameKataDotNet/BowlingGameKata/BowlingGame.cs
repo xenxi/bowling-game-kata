@@ -27,6 +27,12 @@
         public int Score()
         {
             var score = _frames.Sum(f => f.Score);
+            int bunuses = CalculeBonus();
+            return score + bunuses;
+        }
+
+        private int CalculeBonus()
+        {
             var bunuses = 0;
             for (int i = 0; i < _frames.Count - 1; i++)
             {
@@ -48,7 +54,8 @@
                         bunuses += nextFrame.SpareBonus();
                 }
             }
-            return score + bunuses;
+
+            return bunuses;
         }
 
         private void EnsureGameIsNotComplete()
