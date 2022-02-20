@@ -42,7 +42,7 @@
                 var frame = _frames[i];
                 var nextFrame = _frames[i + 1];
 
-                if (IsStrike(frame))
+                if (IsStrike(frame) && i < 9)
                     bunuses += nextFrame.SpareBonus();
 
             }
@@ -51,7 +51,7 @@
 
         private void EnsureGameIsNotComplete()
         {
-            if (_frame == 10)
+            if (_frame == 10 && !IsStrike(_frames[9]))
                 throw new CompletedGame();
         }
 

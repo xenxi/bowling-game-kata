@@ -25,7 +25,22 @@ namespace BowlingGameKata.Tests
 
             action.Should().Throw<CompletedGame>();
         }
+        [Test]
+        public void scores_game_extended_by_spare()
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                _game.Roll(1);
+                _game.Roll(1);
+            }
+            _game.Roll(5);
+            _game.Roll(5);
+            _game.Roll(4);
 
+            var score = _game.Score();
+
+            score.Should().Be(32);
+        }
         [Test]
         public void scores_a_first_roll()
         {
