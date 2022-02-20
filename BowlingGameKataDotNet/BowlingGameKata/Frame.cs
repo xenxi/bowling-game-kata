@@ -5,7 +5,6 @@
         private int _first = 0;
         private int _tries = 0;
         public int Score { get; private set; } = 0;
-        public int Tries => _tries;
 
         public void Anotate(int pinsDown)
         {
@@ -22,11 +21,12 @@
 
             _tries++;
         }
-        public bool IsStrike() => HasBonus() && _tries == 1;
 
-        public bool HasBonus() => Score == 10;
         public bool Completed() => _tries > 1 || Score == 10;
 
+        public bool HasBonus() => Score == 10;
+
+        public bool IsStrike() => HasBonus() && _tries == 1;
         public int SpareBonus() => _first;
     }
 }
