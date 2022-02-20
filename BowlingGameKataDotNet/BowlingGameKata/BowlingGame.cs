@@ -20,23 +20,23 @@
         {
             EnsureGameIsNotComplete();
 
-            _current.Anotate(pinsDown);
-
-            _tries++;
-            _frame = _tries / 2;
-
             if (_current.Completed())
             {
                 _current = new Frame();
                 _frames.Add(_current);
             }
+
+            _current.Anotate(pinsDown);
+
+            _tries++;
+            _frame = _tries / 2;
         }
 
         public int Score()
         {
             var score = _frames.Sum(f => f.Score);
 
-            var bunuses =  0;
+            var bunuses = 0;
             for (int i = 0; i < _frames.Count - 1; i++)
             {
                 var frame = _frames[i];
@@ -44,17 +44,19 @@
 
                 if (IsStrike(frame) && i < 9)
                     bunuses += nextFrame.SpareBonus();
-
             }
             return score + bunuses;
         }
 
         private void EnsureGameIsNotComplete()
         {
-            if (_frame == 10 && !IsStrike(_frames[9]))
-                throw new CompletedGame();
+            if (_frames.Count > 9)
+            {
+                var lastFrame = _frames[9];
+                if (lastFrame.Completed() && !IsStrike(lastFrame))
+                    throw new CompletedGame();
+            }
         }
-
 
         private bool IsStrike(Frame frame) => frame.Score == 10;
     }
