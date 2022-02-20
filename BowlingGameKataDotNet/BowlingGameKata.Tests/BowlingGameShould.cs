@@ -102,7 +102,16 @@ namespace BowlingGameKata.Tests
 
             score.Should().Be(18);
         }
+        [Test]
+        public void scores_a_perfect_game()
+        {
+            for (int i = 0; i < 12; i++)
+                _game.Roll(10);
 
+            var score = _game.Score();
+
+            score.Should().Be(300);
+        }
         [Test]
         public void scores_game_extended_by_spare()
         {
