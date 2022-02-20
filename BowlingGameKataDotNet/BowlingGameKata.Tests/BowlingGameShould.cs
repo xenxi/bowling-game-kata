@@ -157,7 +157,20 @@ namespace BowlingGameKata.Tests
 
             score.Should().Be(33);
         }
+        [Test]
+        public void scores_multiple_concatenate_strikes()
+        {
+            _game.Roll(10);
+            _game.Roll(10);
+            _game.Roll(1);
+            _game.Roll(2);
+            _game.Roll(3);
+            _game.Roll(4);
 
+            var score = _game.Score();
+
+            score.Should().Be(44);
+        }
         [SetUp]
         public void SetUp()
         {

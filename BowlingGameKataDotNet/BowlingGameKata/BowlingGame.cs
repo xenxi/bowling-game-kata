@@ -38,7 +38,14 @@
                 if (frame.HasBonus() && i < 9)
                 {
                     if (frame.IsStrike())
+                    {
                         bunuses += nextFrame.Score;
+                        if (nextFrame.IsStrike())
+                        {
+                            var next = i + 2 < _frames.Count ? _frames[i + 2] : null;
+                            bunuses += next?.SpareBonus() ?? 0;
+                        }
+                    }
                     else
                         bunuses += nextFrame.SpareBonus();
                 }
