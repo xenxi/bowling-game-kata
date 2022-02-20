@@ -5,6 +5,7 @@
         private int _first = 0;
         private int _tries = 0;
         public int Score { get; private set; } = 0;
+        public int Tries => _tries;
 
         public void Anotate(int pinsDown)
         {
