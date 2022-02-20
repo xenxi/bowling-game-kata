@@ -42,6 +42,7 @@ namespace BowlingGameKata.Tests
 
             action.Should().Throw<CompletedGame>();
         }
+
         [Test]
         public void scores_a_first_roll()
         {
@@ -76,6 +77,18 @@ namespace BowlingGameKata.Tests
         }
 
         [Test]
+        public void scores_a_strike()
+        {
+            _game.Roll(10);
+            _game.Roll(2);
+            _game.Roll(2);
+
+            var score = _game.Score();
+
+            score.Should().Be(18);
+        }
+
+        [Test]
         public void scores_game_extended_by_spare()
         {
             for (int i = 0; i < 9; i++)
@@ -91,6 +104,7 @@ namespace BowlingGameKata.Tests
 
             score.Should().Be(32);
         }
+
         [Test]
         public void scores_multiple_spares()
         {

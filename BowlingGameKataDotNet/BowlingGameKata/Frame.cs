@@ -22,7 +22,7 @@
             _tries++;
         }
 
-        public bool Completed() => _tries > 1;
+        public bool Completed() => _tries > 1 || Score == 10;
 
         public int SpareBonus() => _first;
     }
