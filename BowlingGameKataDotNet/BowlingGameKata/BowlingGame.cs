@@ -24,14 +24,7 @@
             _current.Anotate(pinsDown);
         }
 
-        public int Score()
-        {
-            int score = CalculeScore();
-            int bunuses = CalculeBonus();
-            return score + bunuses;
-        }
-
-        private int CalculeScore() => _frames.Sum(f => f.Score);
+        public int Score() => CalculeScore() + CalculeBonus();
 
         private int CalculeBonus()
         {
@@ -60,6 +53,7 @@
             return bunuses;
         }
 
+        private int CalculeScore() => _frames.Sum(f => f.Score);
         private void EnsureGameIsNotComplete()
         {
             if (_frames.Count == 10)
