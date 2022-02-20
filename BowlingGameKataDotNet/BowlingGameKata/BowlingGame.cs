@@ -26,10 +26,12 @@
 
         public int Score()
         {
-            var score = _frames.Sum(f => f.Score);
+            int score = CalculeScore();
             int bunuses = CalculeBonus();
             return score + bunuses;
         }
+
+        private int CalculeScore() => _frames.Sum(f => f.Score);
 
         private int CalculeBonus()
         {
