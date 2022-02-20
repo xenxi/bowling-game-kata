@@ -3,17 +3,12 @@
     public class BowlingGame
     {
         private Frame _current;
-        private int _frame = 0;
         private IList<Frame> _frames;
-        private int _tries = 0;
 
         public BowlingGame()
         {
             _current = new Frame();
             _frames = new List<Frame> { _current };
-
-            _frame = 0;
-            _tries = 0;
         }
 
         public void Roll(int pinsDown)
@@ -27,9 +22,6 @@
             }
 
             _current.Anotate(pinsDown);
-
-            _tries++;
-            _frame = _tries / 2;
         }
 
         public int Score()
