@@ -87,5 +87,32 @@ namespace BowlingGameKata.Tests
 
             score.Should().Be(300);
         }
+
+        [Test]
+        public void score_a_normal_game()
+        {
+            var game = new BowlingGame();
+            game.Roll(10);
+            game.Roll(7);
+            game.Roll(3);
+            game.Roll(9);
+            game.Roll(0);
+            game.Roll(10);
+            game.Roll(0);
+            game.Roll(8);
+            game.Roll(8);
+            game.Roll(2);
+            game.Roll(0);
+            game.Roll(6);
+            game.Roll(10);
+            game.Roll(10);
+            game.Roll(10);
+            game.Roll(8);
+            game.Roll(1);
+
+            var score = game.Score();
+
+            score.Should().Be(167);
+        }
     }
 }
