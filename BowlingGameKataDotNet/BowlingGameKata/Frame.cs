@@ -1,4 +1,6 @@
-﻿namespace BowlingGameKata
+﻿using BowlingGameKata.Exceptions;
+
+namespace BowlingGameKata
 {
     public class Frame
     {

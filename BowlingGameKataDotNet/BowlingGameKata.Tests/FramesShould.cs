@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using BowlingGameKata.Exceptions;
+using FluentAssertions;
 using NUnit.Framework;
 using System;
 
