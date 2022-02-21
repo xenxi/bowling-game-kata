@@ -2,12 +2,8 @@
 {
     public class BowlingGame
     {
-        private ComposableFrame _rolls;
+        private ComposableFrame _rolls = new ComposableFrame();
 
-        public BowlingGame()
-        {
-            _rolls = new ComposableFrame();
-        }
 
         public void Roll(int pinsDown)
         {
