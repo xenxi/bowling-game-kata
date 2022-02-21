@@ -2,16 +2,11 @@
 {
     public class Scorer
     {
-        private const int MAX_SCOREABLE_FRAME = 10;
         private int _bonus = 0;
         private List<int> _nodesWithSpareBonusActive = new List<int>();
         private List<int> _nodesWithStrikeBonusActive = new List<int>();
         private int _score = 0;
         private int _visits = 0;
-        public int Bonus => _bonus;
-
-        public int Score() => _score + _bonus;
-
         public void Compute(Frame frame)
         {
             _score += Scoreable() ? frame.Score : 0;
@@ -22,6 +17,7 @@
             _visits++;
         }
 
+        public int Score() => _score + _bonus;
         private void ComputeSpare(Frame frame)
         {
             _bonus += IsSpareBonusActive() ? frame.SpareBonus() : 0;
@@ -45,6 +41,6 @@
 
         private bool IsStrikeBonusActive() => _nodesWithStrikeBonusActive.Contains(_visits);
 
-        private bool Scoreable() => _visits < MAX_SCOREABLE_FRAME;
+        private bool Scoreable() => _visits < 10;
     }
 }
