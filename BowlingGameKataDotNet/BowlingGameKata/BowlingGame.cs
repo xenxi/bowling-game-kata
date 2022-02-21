@@ -3,23 +3,15 @@
     public class BowlingGame
     {
         private ComposableFrame _current;
-        private IList<Frame> _frames;
 
         public BowlingGame()
         {
             _current = new ComposableFrame();
-            _frames = new List<Frame> { _current };
         }
 
         public void Roll(int pinsDown)
         {
             EnsureGameIsNotComplete();
-
-            //if (_current.Completed())
-            //{
-            //    _current = new Frame();
-            //    _frames.Add(_current);
-            //}
 
             _current.Anotate(pinsDown);
         }
