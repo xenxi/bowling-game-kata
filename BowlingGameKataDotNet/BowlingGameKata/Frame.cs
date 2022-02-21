@@ -6,7 +6,7 @@
         private int _tries = 0;
         public int Score { get; private set; } = 0;
 
-        public void Anotate(int pinsDown)
+        public virtual void Anotate(int pinsDown)
         {
             if (Completed())
                 throw new CompletedFrame();
@@ -27,6 +27,7 @@
         public bool HasBonus() => Score == 10;
 
         public bool IsStrike() => HasBonus() && _tries == 1;
+
         public int SpareBonus() => _first;
     }
 }

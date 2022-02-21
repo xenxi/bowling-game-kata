@@ -2,12 +2,12 @@
 {
     public class BowlingGame
     {
-        private Frame _current;
+        private ComposableFrame _current;
         private IList<Frame> _frames;
 
         public BowlingGame()
         {
-            _current = new Frame();
+            _current = new ComposableFrame();
             _frames = new List<Frame> { _current };
         }
 
@@ -15,11 +15,11 @@
         {
             EnsureGameIsNotComplete();
 
-            if (_current.Completed())
-            {
-                _current = new Frame();
-                _frames.Add(_current);
-            }
+            //if (_current.Completed())
+            //{
+            //    _current = new Frame();
+            //    _frames.Add(_current);
+            //}
 
             _current.Anotate(pinsDown);
         }
@@ -28,6 +28,7 @@
 
         private int CalculeBonus()
         {
+            var _frames = _current.AsFrames();
             var bunuses = 0;
             for (int i = 0; i < _frames.Count - 1; i++)
             {
@@ -53,9 +54,15 @@
             return bunuses;
         }
 
-        private int CalculeScore() => _frames.Sum(f => f.Score);
+        private int CalculeScore()
+        {
+            var frames = _current.AsFrames();
+            return frames.Sum(f => f.Score);
+        }
+
         private void EnsureGameIsNotComplete()
         {
+            var _frames = _current.AsFrames();
             if (_frames.Count == 10)
             {
                 var lastFrame = _frames[9];
