@@ -4,7 +4,7 @@
     {
         private int _bonus = 0;
         private List<int> _spareBonifiedVisits = new List<int>();
-        private List<int> _nodesWithStrikeBonusActive = new List<int>();
+        private List<int> _strikeBonifiedVisits = new List<int>();
         private int _score = 0;
         private int _visits = 0;
         public void Compute(Frame frame)
@@ -31,7 +31,7 @@
             _bonus += activeBonus ? frame.Score : 0;
             if (frame.IsStrike())
             {
-                _nodesWithStrikeBonusActive.Add(_visits + 1);
+                _strikeBonifiedVisits.Add(_visits + 1);
 
                 if (activeBonus && Scoreable()) _spareBonifiedVisits.Add(_visits + 1);
             }
@@ -39,7 +39,7 @@
 
         private bool IsSpareBonusActive() => _spareBonifiedVisits.Contains(_visits);
 
-        private bool IsStrikeBonusActive() => _nodesWithStrikeBonusActive.Contains(_visits);
+        private bool IsStrikeBonusActive() => _strikeBonifiedVisits.Contains(_visits);
 
         private bool Scoreable() => _visits < 10;
     }
