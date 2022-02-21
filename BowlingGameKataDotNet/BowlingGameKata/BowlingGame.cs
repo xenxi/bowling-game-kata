@@ -18,7 +18,7 @@ namespace BowlingGameKata
         {
             var scorer = new Scorer();
             _rolls.Accept(scorer);
-            return scorer.Score + CalculeBonus();
+            return scorer.Score();
         }
 
         private int CalculeBonus()

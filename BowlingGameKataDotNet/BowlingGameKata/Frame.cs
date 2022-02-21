@@ -26,6 +26,8 @@ namespace BowlingGameKata
 
         public bool Completed() => _tries > 1 || Score == 10;
 
+        public bool IsSpare() => HasBonus() && _tries == 2;
+
         public bool HasBonus() => Score == 10;
 
         public bool IsStrike() => HasBonus() && _tries == 1;
