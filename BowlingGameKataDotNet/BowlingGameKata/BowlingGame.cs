@@ -14,7 +14,12 @@ namespace BowlingGameKata
             _rolls.Anotate(pinsDown);
         }
 
-        public int Score() => CalculeScore() + CalculeBonus();
+        public int Score()
+        {
+            var scorer = new Scorer();
+            _rolls.Accept(scorer);
+            return scorer.Score + CalculeBonus();
+        }
 
         private int CalculeBonus()
         {

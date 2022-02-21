@@ -4,6 +4,20 @@
     {
         private ComposableFrame? _next;
 
+        public void Accept(Scorer scorer)
+        {
+            scorer.Compute(this);
+            _next?.Accept(scorer);
+        }
+
+        public override void Anotate(int pinsDown)
+        {
+            if (Completed())
+                Next().Anotate(pinsDown);
+            else
+                base.Anotate(pinsDown);
+        }
+
         public IList<Frame> AsFrames()
         {
             var aux = this;
@@ -14,13 +28,6 @@
                 aux = aux._next;
             }
             return result;
-        }
-        public override void Anotate(int pinsDown)
-        {
-            if(Completed())
-                Next().Anotate(pinsDown);
-            else
-                base.Anotate(pinsDown);
         }
         public ComposableFrame Next() => _next ??= new ComposableFrame();
     }
