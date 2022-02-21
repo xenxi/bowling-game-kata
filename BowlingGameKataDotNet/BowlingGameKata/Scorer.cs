@@ -3,14 +3,14 @@
     public class Scorer
     {
         private int _bonus = 0;
+        private int _score = 0;
         private List<int> _spareBonifiedVisits = new List<int>();
         private List<int> _strikeBonifiedVisits = new List<int>();
-        private int _score = 0;
         private int _visits = 0;
+
         public void Compute(Frame frame)
         {
-            _score += Scoreable() ? frame.Score : 0;
-
+            ComputeScore(frame);
             ComputeStrike(frame);
             ComputeSpare(frame);
 
@@ -18,6 +18,8 @@
         }
 
         public int Score() => _score + _bonus;
+
+        private void ComputeScore(Frame frame) => _score += Scoreable() ? frame.Score : 0;
         private void ComputeSpare(Frame frame)
         {
             _bonus += IsSpareBonusActive() ? frame.SpareBonus() : 0;
