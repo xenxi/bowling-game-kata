@@ -21,6 +21,11 @@
 
         private void ActiveSpareBonusForNext() => _spareBonifiedVisits.Add(_visits + 1);
 
+        private void ActiveStrikeBonusForNext()
+        {
+            _strikeBonifiedVisits.Add(_visits + 1);
+        }
+
         private void ComputeScore(Frame frame) => _score += Scoreable() ? frame.Score : 0;
 
         private void ComputeSpare(Frame frame)
@@ -28,18 +33,18 @@
             _bonus += IsSpareBonusActive() ? frame.SpareBonus() : 0;
             if (frame.IsSpare()) ActiveSpareBonusForNext();
         }
+
         private void ComputeStrike(Frame frame)
         {
             var activeBonus = IsStrikeBonusActive();
             _bonus += activeBonus ? frame.Score : 0;
             if (frame.IsStrike())
             {
-                _strikeBonifiedVisits.Add(_visits + 1);
+                ActiveStrikeBonusForNext();
 
                 if (activeBonus && Scoreable()) ActiveSpareBonusForNext();
             }
         }
-
         private bool IsSpareBonusActive() => _spareBonifiedVisits.Contains(_visits);
 
         private bool IsStrikeBonusActive() => _strikeBonifiedVisits.Contains(_visits);
