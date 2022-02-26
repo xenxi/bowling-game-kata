@@ -33,5 +33,6 @@ namespace BowlingGameKata
         public bool IsStrike() => HasBonus() && _tries == 1;
 
         public int SpareBonus() => _first;
+        public bool NotPlayed() => _tries == 0;
     }
 }
