@@ -33,30 +33,32 @@ namespace BowlingGameKata
 
         public ComposableFrame Next() => _next ??= new ComposableFrame(this, _index + 1);
 
-        private void EnsureGameIsNotComplete()
+        private void EnsureGameIsNotComplete() 
         {
-            if (_index < 10)
-                return;
+            switch (_index)
+            {
+                case 10:
+                    if (Completed() && !HasBonus())
+                        throw new CompletedGame();
+                    break;
 
-            if (_index == 10)
-            {
-                if (Completed() && !HasBonus())
-                    throw new CompletedGame();
-            }
-            else if (_index == 11)
-            {
-                var lastFrame = GetLastFrame()!;
+                case 11:
+                    {
+                        var lastFrame = GetLastFrame()!;
 
-                if (!NotPlayed() && !lastFrame.IsStrike())
+                        if (!NotPlayed() && !lastFrame.IsStrike())
+                            throw new CompletedGame();
+                        break;
+                    }
+
+                case 12:
+                    if (!NotPlayed() || !_previous!.HasBonus())
+                        throw new CompletedGame();
+                    break;
+
+                case > 12:
                     throw new CompletedGame();
             }
-            else if (_index == 12)
-            {
-                if (!NotPlayed() || !_previous!.HasBonus())
-                    throw new CompletedGame();
-            }
-            else if (_index > 12)
-                throw new CompletedGame();
         }
 
         private ComposableFrame GetLastFrame()
