@@ -31,18 +31,6 @@ namespace BowlingGameKata
                 base.Anotate(pinsDown);
         }
 
-        public IList<Frame> AsFrames()
-        {
-            var aux = this;
-            var result = new List<Frame>();
-            while (aux != null)
-            {
-                result.Add(aux);
-                aux = aux._next;
-            }
-            return result;
-        }
-
         public ComposableFrame Next() => _next ??= new ComposableFrame(this, _index + 1);
 
         private void EnsureGameIsNotComplete()

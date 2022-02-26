@@ -1,17 +1,10 @@
-﻿using BowlingGameKata.Exceptions;
-
-namespace BowlingGameKata
+﻿namespace BowlingGameKata
 {
     public class BowlingGame
     {
         private ComposableFrame _rolls = ComposableFrame.Create();
 
-        public void Roll(int pinsDown)
-        {
-            //EnsureGameIsNotComplete();
-
-            _rolls.Anotate(pinsDown);
-        }
+        public void Roll(int pinsDown) => _rolls.Anotate(pinsDown);
 
         public int Score()
         {
@@ -19,6 +12,5 @@ namespace BowlingGameKata
             _rolls.Accept(scorer);
             return scorer.Score();
         }
-
     }
 }
